@@ -2,11 +2,11 @@
   "name": "whack-a-mole",
   "version": "0.0.1",
   "description": "Amer's test game",
-  "author": "Does it matter? <amerturkovic@umail.com.com>",
+  "author": "Amer - <amerturkovic@mail.com>",
   "main": "src/app.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jstoiko/gulp-backbone-browserify.git"
+    "url": "https://github.com/amerturkovic/whack-a-mole.git"
   },
   "browserify": {
     "transform": [
