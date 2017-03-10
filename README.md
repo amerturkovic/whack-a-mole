@@ -1,4 +1,4 @@
-# gulp-backbone-browserify
+# whack-a-mole game
 Gulp workflow for Backbone.js using Browserify (CommonJS)
 
 ## Dependencies
