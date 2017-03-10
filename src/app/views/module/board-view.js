@@ -9,27 +9,29 @@ Backbone.$ = $;
 var BaseView = require('../_extend/baseView');
 var template = require('./../templates/board-view.html');
 var BoardTile = require('./board-tile');
+var ScoreDisplay = require('./score-display');
 
 module.exports = BaseView.extend({
     
-    events: {
-        
-    },
+    events: {},
     
     tiles: [],
     
-    //
+    scoreDisplayView: null,
+    
     initialize: function(options) {
         
         var _this = this;
     
-        this.model = options.model;
+        _this.model = options.model;
     
         // Just hard code it for now
-        this.tilesPerBoard = 12;
+        _this.tilesPerBoard = 12;
     
         // Mole apear interval
-        this.moleAppearInterval = null;
+        _this.moleAppearInterval = null;
+    
+        _this.listenTo(Backbone.Events, 'gameover', _this.endGame);
         
         // Reset Start Game button event
         $('#start-game').off('click').on('click', function(){
@@ -39,30 +41,27 @@ module.exports = BaseView.extend({
             
         }).attr("disabled", false);
     
-        _this.listenTo(_this.model,'change:score', _this.scoreUpdateHandler);
-        _this.listenTo(_this.model,'change:level', _this.levelUpdateHandler);
+        // Attach score display view
+        if (_this.scoreDisplayView){
+            
+            _this.scoreDisplayView.dispose();
+        }
+    
+        $('.score-board').empty();
+        
+        _this.scoreDisplayView = new ScoreDisplay({model: this.model});
+        
+        $('.score-board').append(_this.scoreDisplayView.render().el);
+        
     },
     
     render: function() {
         
         this.$el.html(template());
+        
         this.createBoard();
 
         return this;
-    },
-    
-    scoreUpdateHandler: function(){
-    
-        var _this = this;
-        var _score = _this.model.get('score');
-        $('score-board').find('.score').html(_score);
-    },
-    
-    levelUpdateHandler: function(){
-        
-        var _this = this;
-        var _level = _this.model.get('level');
-        $('score-board').find('.score').html(_level);
     },
     
     
@@ -75,6 +74,7 @@ module.exports = BaseView.extend({
         for(var i = 0; i < _this.tilesPerBoard; i++){
             
             var _currentTile = new BoardTile({model: _this.model});
+            
             this.$el.find('ul').append(_currentTile.render().$el);
             
             _this.tiles.push(_currentTile);
@@ -109,20 +109,14 @@ module.exports = BaseView.extend({
         var _this = this;
         
         var turnTime = _this.model.get('turnTime');
-        var gameTime = _this.model.get('time');
         
         _this.moleAppearInterval = setInterval(function() {
             
             _this.spawnMole();
             
         }, turnTime);
-        
-        
-        setTimeout(function() {
-            
-            _this.endGame();
-            
-        }, gameTime);
+    
+        _this.scoreDisplayView.activateGameTimer();
 
     },
     

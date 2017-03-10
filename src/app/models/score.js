@@ -5,10 +5,10 @@ var RelationalModel = require('backbone-relational');
 
 module.exports = Backbone.RelationalModel.extend({
     defaults: {
-        time: 20 * 1000, // seconds
+        time: 10, // seconds
         turnTime: 500,
-        lifeMin: 500, // miliseconds
-        lifeMax: 1500,
+        lifeMin: 300, // miliseconds
+        lifeMax: 900,
         score: 0,
         level: 1
     }
