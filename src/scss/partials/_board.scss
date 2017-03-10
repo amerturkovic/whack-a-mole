@@ -1,0 +1,63 @@
+.module-container {
+  background: $indochine;
+  color: $dark-gray;
+  margin: auto;
+  width: 50%;
+  border: 1px solid $ash-gray;
+  padding: 10px;
+  min-width: 400px;
+
+  &.header,
+  &.nav {
+    background: $half-colonial-white;
+  }
+
+  .score-board {
+
+    float: right;
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      text-align: center;
+
+      li {
+        display: inline;
+
+        span {
+          font-weight: bold;
+        }
+      }
+    }
+
+  }
+
+  .board {
+    background: $indochine;
+    margin: auto;
+    min-height: 300px;
+    width: 400px;
+    margin-top: 0;
+
+    .module-list {
+      padding: 0;
+      text-align: center;
+      margin: 0;
+
+      .tile {
+        width: 85px;
+        height: 85px;
+        background: $tangerine;
+        margin: 4px;
+        display: inline-block;
+        cursor: default;
+
+        &.mole{
+          background: $half-colonial-white;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

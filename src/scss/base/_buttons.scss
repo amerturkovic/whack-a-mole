@@ -1,0 +1,13 @@
+.navigation {
+
+  .button {
+    margin-rigt: 10px;
+
+    &.disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+    }
+
+  }
+}
+

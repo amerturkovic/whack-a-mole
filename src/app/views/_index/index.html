@@ -1,0 +1,63 @@
+<!doctype html>
+<!--[if IE 8 ]><html lang="en" class="ie ie8"><![endif]-->
+<!--[if IE 9 ]><html lang="en" class="ie ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html lang="en"><!--<![endif]-->
+    <head>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+
+        <title>Whack A Mole Game</title>
+
+        <!-- build:css css/main.min.css -->
+        <link rel="stylesheet" href="css/main.css">
+        <!-- endbuild -->
+
+        <!--[if lt IE 9]><script src="js/html5shiv/dist/html5shiv.min.js"></script><![endif]-->
+    </head>
+
+    <body>
+
+        <section class="module">
+            <div class="module-container header">
+                <div class="module-header">
+                    <h1>Welcome to Whack A Mole Game</h1>
+                </div>
+                <div class="module-content">
+                    A lot of moles will appear randomly, your objective is to hit at least 30 of them within 20 seconds.
+                    Be sure to hit them before they start to hide...
+                </div>
+            </div>
+        </section>
+
+        <section class="module">
+            <div class="module-container">
+                <div class="module-content board">
+                </div>
+            </div>
+        </section>
+
+        <section class="module">
+            <div class="module-container nav">
+                <div class="module-content score-board">
+                    <ul>
+                        <li>Time: <span class="time">00:00</span> | </li>
+                        <li>Score: <span class="score">000</span> | </li>
+                        <li>Level: <span class="level">00</span></li>
+                    </ul>
+                </div>
+
+                <div class="navigation">
+                    <button id="start-game" class="btn">Start Game</button>
+                    <button id="start-over" class="btn" disabled>Go Back</button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- build:js js/main.min.js -->
+        <script src="js/main.js"></script>
+        <!-- endbuild -->
+    </body>
+</html>
